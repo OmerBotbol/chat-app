@@ -2,7 +2,7 @@ import "./App.css";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Profile from "./components/Profile";
-import Loading from "./components/Loading";
+import Login from "./components/Login";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAVCxBcTc0Zv1bJodxDZ_Pf-i6OH47O_lE",
@@ -17,9 +17,19 @@ firebase.initializeApp({
 const auth = firebase.auth();
 
 function App() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
-  return <div>{user ? <Profile user={user} /> : <Loading user={user} />}</div>;
+  return (
+    <div>
+      {!loading && user ? (
+        <Profile user={user} />
+      ) : !loading && !user ? (
+        <Login />
+      ) : (
+        "loading..."
+      )}
+    </div>
+  );
 }
 
 export default App;
