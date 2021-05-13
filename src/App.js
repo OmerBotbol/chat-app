@@ -2,7 +2,6 @@ import "./App.css";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Profile from "./components/Profile";
-import { useEffect } from "react";
 import Loading from "./components/Loading";
 
 firebase.initializeApp({
@@ -19,11 +18,6 @@ const auth = firebase.auth();
 
 function App() {
   const [user] = useAuthState(auth);
-
-  useEffect(() => {
-    if (!user) {
-    }
-  }, [user]);
 
   return <div>{user ? <Profile user={user} /> : <Loading user={user} />}</div>;
 }

@@ -5,11 +5,10 @@ function Loading({ user }) {
   const [finishLoading, setFinishLoading] = useState(false);
 
   useEffect(() => {
-    const timeOut = setTimeout(() => {
+    if (user) {
       setFinishLoading(true);
-    }, 3000);
-    return user && clearTimeout(timeOut);
-  });
+    }
+  }, [user]);
 
   return <div>{finishLoading ? <Login /> : "Loading..."}</div>;
 }
