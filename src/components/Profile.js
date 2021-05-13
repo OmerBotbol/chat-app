@@ -37,7 +37,11 @@ function Profile({ user }) {
           })}
       </ul>
       {chatMessages && (
-        <ChatsWindow header={currentChatName} chatMessages={chatMessages} />
+        <ChatsWindow
+          header={currentChatName}
+          chatMessages={chatMessages}
+          userId={user.uid}
+        />
       )}
 
       <button onClick={() => firebase.auth().signOut()}>logout</button>

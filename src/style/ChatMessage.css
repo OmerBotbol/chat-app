@@ -1,0 +1,36 @@
+.bubble {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  width: max-content;
+  border-radius: 10px;
+  border: gray 1px solid;
+  align-items: flex-start;
+  position: relative;
+  padding: 3px 5px;
+  display: block;
+}
+.my {
+  align-items: flex-end;
+}
+
+.left {
+  background-color: greenyellow;
+}
+
+.userName {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.content {
+  text-align: left;
+}
+
+.time {
+  font-size: x-small;
+  text-align: right;
+  color: gray;
+}
