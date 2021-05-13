@@ -1,7 +1,7 @@
 import React from "react";
 
-function ChatMassage({ data }) {
+function ChatMessage({ data }) {
   return <div>{data.content}</div>;
 }
 
-export default ChatMassage;
+export default ChatMessage;

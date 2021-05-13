@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#chat-list {
+  position: absolute;
+  top: 70px;
+  border: 1px rgb(49, 216, 15) solid;
+  width: 30%;
+  height: 80vh;
+  list-style: none;
+  text-align: center;
+}
+
+#chat-window {
+  position: absolute;
+  border: 1px rgb(49, 216, 15) solid;
+  width: 69%;
+  height: 80vh;
+  top: 70px;
+  right: 0;
+}

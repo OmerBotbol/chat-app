@@ -1,13 +1,14 @@
 import React from "react";
-import ChatMassage from "./ChatMassage";
+import ChatMessage from "./ChatMessage";
+import "../style/Profile.css";
 
-function ChatsWindow({ chatMessages }) {
+function ChatsWindow({ chatMessages, header }) {
   return (
-    <div>
+    <div id="chat-window">
+      <h3>{header}</h3>
       {chatMessages.map((data, i) => {
-        return <ChatMassage data={data} key={i} />;
+        return <ChatMessage data={data} key={i} />;
       })}
-      {console.log(chatMessages)}
     </div>
   );
 }
