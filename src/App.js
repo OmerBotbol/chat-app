@@ -25,7 +25,7 @@ function App() {
     }
   }, [user]);
 
-  return <div>{user ? <Profile user={user} /> : <Loading />}</div>;
+  return <div>{user ? <Profile user={user} /> : <Loading user={user} />}</div>;
 }
 
 export default App;

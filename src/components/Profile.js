@@ -1,10 +1,13 @@
 import React from "react";
+import firebase from "firebase";
 
 function Profile({ user }) {
+  const logout = () => {};
+
   return (
     <>
       <h1>Hello {user.displayName}</h1>
-      <div>what would you like to do?</div>
+      <button onClick={() => firebase.auth().signOut()}>logout</button>
     </>
   );
 }
