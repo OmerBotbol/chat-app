@@ -1,7 +1,7 @@
 import React from "react";
 
-function ChatList({ name }) {
-  return <li>{name}</li>;
+function ChatList({ chat, setCurrentChatId }) {
+  return <li onClick={() => setCurrentChatId(chat.id)}>{chat.name}</li>;
 }
 
 export default ChatList;
