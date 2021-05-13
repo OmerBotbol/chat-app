@@ -2,6 +2,7 @@ import "./App.css";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAVCxBcTc0Zv1bJodxDZ_Pf-i6OH47O_lE",
@@ -18,7 +19,7 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth);
 
-  return <div>{user ? "profile" : <Login />}</div>;
+  return <div>{user ? <Profile user={user} /> : <Login />}</div>;
 }
 
 export default App;
