@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatList from "./ChatList";
@@ -11,7 +11,6 @@ function Profile({ user }) {
   const refMessages = fireStore.collection("messages");
   const [currentChatId, setCurrentChatId] = useState("");
   const [currentChatName, setCurrentChatName] = useState("");
-  const [reset, setReset] = useState(true);
 
   const [chats] = useCollectionData(
     refChats.where("users", "array-contains", user.uid)

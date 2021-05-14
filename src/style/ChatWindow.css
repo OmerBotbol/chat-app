@@ -3,7 +3,6 @@
   display: table-column;
   border: 1px #e3e3e3 solid;
   width: 70%;
-  top: 70px;
   right: 0;
   /* background-color: rgb(179, 236, 179); */
 }
@@ -15,7 +14,7 @@
 
 #chat-content {
   overflow: scroll;
-  height: 90vh;
+  height: 89vh;
   background-image: url("../backround-image.jpg");
 }
 

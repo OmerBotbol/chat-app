@@ -12,7 +12,6 @@
 #chat-list {
   position: absolute;
   display: table-column;
-  top: 70px;
   border: 1px #e3e3e3 solid;
   width: 30%;
   list-style: none;
