@@ -24,3 +24,17 @@
   justify-content: space-around;
   background-color: #ededed;
 }
+
+#chat-manager {
+  text-align: center;
+  border: black 1px solid;
+  background-color: white;
+  margin: 0;
+  height: 20vh;
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}

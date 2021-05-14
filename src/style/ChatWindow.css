@@ -8,13 +8,13 @@
 }
 
 #chat-header {
-  font-size: 1.5em;
+  /* font-size: 1.5em; */
   background-color: #ededed;
 }
 
 #chat-content {
   overflow: scroll;
-  height: 89vh;
+  height: 86vh;
   background-image: url("../backround-image.jpg");
 }
 
