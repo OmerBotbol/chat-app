@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase";
-import "../style/Profile.css";
+import "../style/ChatWindow.css";
 
 function ChatsWindow({ chatMessages, header, user, currentChatId }) {
   const fireStore = firebase.firestore();
   const refMessages = fireStore.collection("messages");
   const [content, setContent] = useState("");
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  });
 
   const sendMessage = (event) => {
     refMessages
@@ -25,13 +30,22 @@ function ChatsWindow({ chatMessages, header, user, currentChatId }) {
 
   return (
     <div id="chat-window">
-      <h3>{header}</h3>
-      {chatMessages?.map((data, i) => {
-        return <ChatMessage data={data} key={i} userId={user.uid} />;
-      })}
+      <h3 id="chat-header">{header}</h3>
+      <div id="chat-content">
+        {chatMessages?.map((data, i) => {
+          return <ChatMessage data={data} key={i} userId={user.uid} />;
+        })}
+        <div ref={divRef} />
+      </div>
       <div id="user-input">
-        <input type="text" onChange={(e) => setContent(e.target.value)} />
-        <button onClick={(e) => sendMessage(e)}>Send</button>
+        <input
+          id="message-input"
+          type="text"
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button id="send-btn" onClick={(e) => sendMessage(e)}>
+          Send
+        </button>
       </div>
     </div>
   );

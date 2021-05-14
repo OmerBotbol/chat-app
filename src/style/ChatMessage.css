@@ -4,16 +4,19 @@
 }
 
 .message {
+  background-color: white;
   width: max-content;
+  max-width: 48%;
   border-radius: 10px;
   border: gray 1px solid;
   align-items: flex-start;
   position: relative;
   padding: 3px 5px;
+  margin: 2px;
   display: block;
 }
 .my {
-  background-color: greenyellow;
+  background-color: #dcf8c6;
 }
 
 .left {

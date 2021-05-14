@@ -1,0 +1,40 @@
+#chat-window {
+  position: absolute;
+  border: 1px rgb(49, 216, 15) solid;
+  width: 69%;
+  height: 81vh;
+  top: 70px;
+  right: 0;
+  background-color: rgb(179, 236, 179);
+}
+
+#chat-header {
+  font-size: 1.5em;
+  background-color: lightgreen;
+}
+
+#chat-content {
+  overflow: scroll;
+  height: 70vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#user-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 5px;
+}
+
+#message-input {
+  width: 88%;
+  height: 2em;
+}
+
+#send-btn {
+  width: 9%;
+  height: 2.25em;
+}
