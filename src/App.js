@@ -20,7 +20,7 @@ function App() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <div>
+    <>
       {!loading && user ? (
         <Profile user={user} />
       ) : !loading && !user ? (
@@ -28,7 +28,7 @@ function App() {
       ) : (
         "loading..."
       )}
-    </div>
+    </>
   );
 }
 

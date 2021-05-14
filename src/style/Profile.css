@@ -3,12 +3,25 @@
   padding: 0;
 }
 
+#container {
+  display: table;
+  border-collapse: collapse;
+  height: 100vh;
+}
+
 #chat-list {
   position: absolute;
+  display: table-column;
   top: 70px;
-  border: 1px rgb(49, 216, 15) solid;
+  border: 1px #e3e3e3 solid;
   width: 30%;
-  height: 81vh;
   list-style: none;
   text-align: center;
+}
+
+#chat-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #ededed;
 }

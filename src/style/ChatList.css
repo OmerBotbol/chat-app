@@ -1,0 +1,10 @@
+.chat {
+  border-collapse: collapse;
+  text-align: left;
+  border: #e3e3e3 1px solid;
+  padding: 10px;
+}
+
+.chat:hover {
+  cursor: pointer;
+}

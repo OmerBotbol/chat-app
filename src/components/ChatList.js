@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import "../style/ChatList.css";
 
 function ChatList({ chat, openChatWindow }) {
-  return <li onClick={() => openChatWindow(chat)}>{chat.name}</li>;
+  return (
+    <li className="chat" onClick={() => openChatWindow(chat)}>
+      {chat.name}
+    </li>
+  );
 }
 
 export default ChatList;

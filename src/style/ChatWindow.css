@@ -1,21 +1,22 @@
 #chat-window {
   position: absolute;
-  border: 1px rgb(49, 216, 15) solid;
-  width: 69%;
-  height: 81vh;
+  display: table-column;
+  border: 1px #e3e3e3 solid;
+  width: 70%;
   top: 70px;
   right: 0;
-  background-color: rgb(179, 236, 179);
+  /* background-color: rgb(179, 236, 179); */
 }
 
 #chat-header {
   font-size: 1.5em;
-  background-color: lightgreen;
+  background-color: #ededed;
 }
 
 #chat-content {
   overflow: scroll;
-  height: 70vh;
+  height: 90vh;
+  background-image: url("../backround-image.jpg");
 }
 
 ::-webkit-scrollbar {
