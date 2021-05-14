@@ -30,7 +30,10 @@ function ChatsWindow({ chatMessages, header, user, currentChatId }) {
 
   return (
     <div id="chat-window">
-      <h3 id="chat-header">{header}</h3>
+      <div id="chat-header">
+        <h3>{header}</h3>
+        <h4>{currentChatId}</h4>
+      </div>
       <div id="chat-content">
         {chatMessages?.map((data, i) => {
           return <ChatMessage data={data} key={i} userId={user.uid} />;
