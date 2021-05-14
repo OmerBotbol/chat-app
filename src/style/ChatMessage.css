@@ -13,11 +13,11 @@
   display: block;
 }
 .my {
-  align-items: flex-end;
+  background-color: greenyellow;
 }
 
 .left {
-  background-color: greenyellow;
+  align-items: flex-end;
 }
 
 .userName {

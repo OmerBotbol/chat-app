@@ -16,7 +16,7 @@ function Profile({ user }) {
     refChats.where("users", "array-contains", user.uid)
   );
   const [chatMessages] = useCollectionData(
-    refMessages.where("chatId", "==", currentChatId)
+    refMessages.where("chatId", "==", currentChatId).orderBy("createdAt")
   );
 
   const openChatWindow = (chat) => {
@@ -36,11 +36,12 @@ function Profile({ user }) {
             );
           })}
       </ul>
-      {chatMessages && (
+      {currentChatId && (
         <ChatsWindow
           header={currentChatName}
+          currentChatId={currentChatId}
           chatMessages={chatMessages}
-          userId={user.uid}
+          user={user}
         />
       )}
 
