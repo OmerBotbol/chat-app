@@ -1,8 +1,10 @@
 import "./App.css";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
+import JoinChat from "./components/JoinChat";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAVCxBcTc0Zv1bJodxDZ_Pf-i6OH47O_lE",
@@ -20,15 +22,24 @@ function App() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <>
-      {!loading && user ? (
-        <Profile user={user} />
-      ) : !loading && !user ? (
-        <Login />
-      ) : (
-        "loading..."
-      )}
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {!loading && user ? (
+            <Profile user={user} />
+          ) : !loading && !user ? (
+            <Login />
+          ) : (
+            "loading..."
+          )}
+        </Route>
+        {user && (
+          <Route path="/join">
+            <JoinChat userId={user.uid} />
+          </Route>
+        )}
+      </Switch>
+    </BrowserRouter>
   );
 }
 

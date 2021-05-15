@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase";
 import "../style/ChatWindow.css";
@@ -32,7 +33,7 @@ function ChatsWindow({ chatMessages, header, user, currentChatId }) {
     <div id="chat-window">
       <div id="chat-header">
         <h3>{header}</h3>
-        <div>{currentChatId}</div>
+        <Link to={`/join?chatid=${currentChatId}`}>link to the chat</Link>
       </div>
       <div id="chat-content">
         {chatMessages?.map((data, i) => {

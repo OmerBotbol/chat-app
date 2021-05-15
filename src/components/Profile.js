@@ -30,7 +30,6 @@ function Profile({ user }) {
   };
 
   const createChat = () => {
-    console.log(chatName.current);
     if (chatName.current.length > 0) {
       const newId = uuidv4();
       refChats
@@ -41,6 +40,9 @@ function Profile({ user }) {
           users: [user.uid],
         })
         .then(() => {
+          alert(
+            `to join this chat, enter this url: ${window.location.href}join?chatid=${newId}`
+          );
           openChatManagerBox(false);
           chatName.current = "";
         });
@@ -48,7 +50,6 @@ function Profile({ user }) {
   };
 
   const joinToChat = () => {
-    console.log(chatUsers[0]);
     refChats
       .doc(chatId)
       .update({ users: [...chatUsers[0].users, user.uid] })
