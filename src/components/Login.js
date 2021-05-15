@@ -3,6 +3,9 @@ import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import "../style/Login.css";
 
+const ANONYMOUS =
+  "https://firebasestorage.googleapis.com/v0/b/chat-app-4d700.appspot.com/o/avatars-fuFi52Szkbdm16Gg-arzAGQ-t500x500.jpg?alt=media&token=715fa91f-e6e7-4e57-9fb7-0b1931f5c6f5";
+
 function Login() {
   const fireStore = firebase.firestore();
   const userRef = fireStore.collection("users");
@@ -11,7 +14,8 @@ function Login() {
   const createUser = (user) => {
     const usersId = users.map((userData) => userData.uid);
     if (!usersId.includes(user.uid)) {
-      userRef.add({
+      userRef.doc(user.uid).set({
+        imageUrl: ANONYMOUS,
         uid: user.uid,
         userName: user.displayName,
       });

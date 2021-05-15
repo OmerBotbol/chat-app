@@ -1,3 +1,8 @@
+#profile-image {
+  width: 20px;
+  border-radius: 50%;
+}
+
 .chat {
   border-collapse: collapse;
   text-align: left;
@@ -7,4 +12,9 @@
 
 .chat:hover {
   cursor: pointer;
+  background-color: #ebebeb;
+}
+
+.current {
+  background-color: #ebebeb;
 }

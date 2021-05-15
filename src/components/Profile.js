@@ -8,17 +8,18 @@ import ChatManagerBox from "./ChatManagerBox";
 
 function Profile({ user }) {
   const fireStore = firebase.firestore();
-  const refChats = fireStore.collection("chat rooms");
   const refMessages = fireStore.collection("messages");
+  const refUsers = fireStore.collection("users");
   const [currentChatId, setCurrentChatId] = useState("");
   const [currentChatName, setCurrentChatName] = useState("");
   const [chatManagerBox, openChatManagerBox] = useState(false);
 
-  const [chats] = useCollectionData(
-    refChats.where("users", "array-contains", user.uid)
-  );
   const [chatMessages] = useCollectionData(
     refMessages.where("chatId", "==", currentChatId).orderBy("createdAt")
+  );
+
+  const [userProfile] = useCollectionData(
+    refUsers.where("uid", "==", user.uid)
   );
 
   const openChatWindow = (chat) => {
@@ -28,20 +29,15 @@ function Profile({ user }) {
 
   return (
     <div id="container">
-      <ul id="chat-list">
-        <div id="chat-list-header">
-          <h3>{user.displayName}</h3>
-          <button onClick={() => openChatManagerBox((prev) => !prev)}>
-            Chat Manager
-          </button>
-          <button onClick={() => firebase.auth().signOut()}>logout</button>
-        </div>
-        {chats?.map((chat, i) => {
-          return (
-            <ChatList key={i} chat={chat} openChatWindow={openChatWindow} />
-          );
-        })}
-      </ul>
+      {userProfile && (
+        <ChatList
+          user={user}
+          sourceImage={userProfile[0].imageUrl}
+          currentChatId={currentChatId}
+          openChatManagerBox={openChatManagerBox}
+          openChatWindow={openChatWindow}
+        />
+      )}
       {chatManagerBox && (
         <ChatManagerBox user={user} openChatManagerBox={openChatManagerBox} />
       )}
