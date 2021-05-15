@@ -3,8 +3,9 @@ import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Profile from "./components/Profile";
-import Login from "./components/Login";
+import HomePage from "./components/HomePage";
 import JoinChat from "./components/JoinChat";
+import Signup from "./components/Signup";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAVCxBcTc0Zv1bJodxDZ_Pf-i6OH47O_lE",
@@ -28,11 +29,12 @@ function App() {
           {!loading && user ? (
             <Profile user={user} />
           ) : !loading && !user ? (
-            <Login />
+            <HomePage />
           ) : (
             "loading..."
           )}
         </Route>
+        <Route exact path="/signup" component={Signup} />
         {user && (
           <Route path="/join">
             <JoinChat userId={user.uid} />
