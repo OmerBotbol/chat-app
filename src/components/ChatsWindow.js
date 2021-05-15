@@ -3,7 +3,13 @@ import ChatMessage from "./ChatMessage";
 import firebase from "firebase";
 import "../style/ChatWindow.css";
 
-function ChatsWindow({ chatMessages, header, user, currentChatId }) {
+function ChatsWindow({
+  chatMessages,
+  sourceImage,
+  header,
+  user,
+  currentChatId,
+}) {
   const fireStore = firebase.firestore();
   const refMessages = fireStore.collection("messages");
   const [content, setContent] = useState("");
@@ -21,6 +27,7 @@ function ChatsWindow({ chatMessages, header, user, currentChatId }) {
         createdAt: firebase.firestore.Timestamp.now(),
         userId: user.uid,
         userName: user.displayName,
+        userImage: sourceImage,
       })
       .then(() => {
         setContent("");

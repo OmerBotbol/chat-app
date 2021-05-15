@@ -1,6 +1,21 @@
+* {
+  margin: 0;
+}
+
 .bubble {
   display: flex;
   flex-direction: column;
+}
+.box {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  align-items: center;
+}
+
+.in-chat-image {
+  height: 50px;
+  border-radius: 50%;
 }
 
 .message {
@@ -19,8 +34,8 @@
   background-color: #dcf8c6;
 }
 
-.left {
-  align-items: flex-end;
+.right {
+  flex-direction: row;
 }
 
 .userName {
@@ -29,6 +44,7 @@
 }
 
 .content {
+  overflow: hidden;
   text-align: left;
 }
 

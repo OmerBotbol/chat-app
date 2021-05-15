@@ -46,6 +46,7 @@ function Profile({ user }) {
           header={currentChatName}
           currentChatId={currentChatId}
           chatMessages={chatMessages}
+          sourceImage={userProfile[0].imageUrl}
           user={user}
         />
       )}
