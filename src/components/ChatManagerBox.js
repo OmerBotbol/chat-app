@@ -7,6 +7,7 @@ function ChatManagerBox({ user, openChatManagerBox }) {
   const fireStore = firebase.firestore();
   const refChats = fireStore.collection("chat rooms");
   const [chatIdToJoin, setChatIdToJoin] = useState("");
+  const [messageToUser, setMessageToUser] = useState("");
   const chatName = useRef();
   const [chatUsers] = useCollectionData(
     refChats.where("id", "==", chatIdToJoin)
@@ -29,6 +30,8 @@ function ChatManagerBox({ user, openChatManagerBox }) {
           openChatManagerBox(false);
           chatName.current = "";
         });
+    } else {
+      setMessageToUser("Please enter name for the chat");
     }
   };
 
@@ -44,10 +47,10 @@ function ChatManagerBox({ user, openChatManagerBox }) {
             setChatIdToJoin("");
           });
       } else {
-        console.log("you are already in this chat");
+        setMessageToUser("You are already in this chat");
       }
     } else {
-      console.log("ID was not found");
+      setMessageToUser("ID was not found");
     }
   };
 
@@ -67,6 +70,7 @@ function ChatManagerBox({ user, openChatManagerBox }) {
         onChange={(e) => setChatIdToJoin(e.target.value)}
       />
       <button onClick={() => joinToChat()}>Join</button>
+      <p>{messageToUser}</p>
     </div>
   );
 }

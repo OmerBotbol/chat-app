@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase";
 import "../style/ChatWindow.css";
@@ -29,11 +28,18 @@ function ChatsWindow({ chatMessages, header, user, currentChatId }) {
       });
   };
 
+  const generate = () => {
+    alert(`${window.location.href}join?chatid=${currentChatId}`);
+  };
+
   return (
     <div id="chat-window">
       <div id="chat-header">
         <h3>{header}</h3>
-        <Link to={`/join?chatid=${currentChatId}`}>link to the chat</Link>
+        <div>{`chat ID: ${currentChatId}`}</div>
+        <button id="generate-btn" onClick={() => generate()}>
+          Generate Link
+        </button>
       </div>
       <div id="chat-content">
         {chatMessages?.map((data, i) => {

@@ -36,12 +36,11 @@ function Profile({ user }) {
           </button>
           <button onClick={() => firebase.auth().signOut()}>logout</button>
         </div>
-        {chats &&
-          chats.map((chat, i) => {
-            return (
-              <ChatList key={i} chat={chat} openChatWindow={openChatWindow} />
-            );
-          })}
+        {chats?.map((chat, i) => {
+          return (
+            <ChatList key={i} chat={chat} openChatWindow={openChatWindow} />
+          );
+        })}
       </ul>
       {chatManagerBox && (
         <ChatManagerBox user={user} openChatManagerBox={openChatManagerBox} />
