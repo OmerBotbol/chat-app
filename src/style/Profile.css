@@ -16,6 +16,7 @@
   border: 1px #e3e3e3 solid;
   list-style: none;
   text-align: center;
+  background-color: white;
 }
 
 #chat-list-header {

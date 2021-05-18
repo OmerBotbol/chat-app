@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import "../style/Login.css";
+import "../style/HomePage.css";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -50,26 +50,33 @@ function HomePage() {
   return (
     <div id="login-page">
       <h1 id="login-header">login</h1>
-      <div id="login-buttons">
-        <form onSubmit={() => loginWithEmailAndPassword()}>
-          <label>email: </label>
+      <div>
+        <form id="login-form" onSubmit={() => loginWithEmailAndPassword()}>
+          <p>email: </p>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
-          <label>password: </label>
+          <p>password: </p>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">submit</button>
+          <button type="submit" className="login-btn">
+            submit
+          </button>
         </form>
-        <button onClick={() => loginWithGoogle()}>login with google</button>
+      </div>
+      <div id="login-buttons">
+        <button className="login-btn" onClick={() => loginWithGoogle()}>
+          login with google
+        </button>
         <button
+          className="login-btn"
           onClick={() => {
             loginWithFacebook();
           }}
         >
           login with facebook
         </button>
-        <Link to="/signup">Signup here</Link>
+        <Link to="/signup">Sign-up here</Link>
       </div>
     </div>
   );

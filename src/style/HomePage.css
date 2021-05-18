@@ -1,0 +1,35 @@
+body {
+  background-color: #dcf8c6;
+}
+
+#login-page {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: black 1px solid;
+  width: 30%;
+  height: 60vh;
+  background-color: #c6fd9b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#login-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20vh;
+}
+.login-btn {
+  display: block;
+}
+
+#login-header {
+  padding: 10px;
+  text-align: center;
+}

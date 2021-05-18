@@ -1,4 +1,3 @@
-import "./App.css";
 import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
