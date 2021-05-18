@@ -7,7 +7,7 @@ function ChatList({
   user,
   sourceImage,
   currentChatId,
-  openChatManagerBox,
+  openSettingsMenu,
   openChatWindow,
 }) {
   const fireStore = firebase.firestore();
@@ -23,7 +23,7 @@ function ChatList({
         <h3 id="username">{user.displayName}</h3>
         <button
           id="chat-manager-btn"
-          onClick={() => openChatManagerBox((prev) => !prev)}
+          onClick={() => openSettingsMenu((prev) => !prev)}
         >
           Settings
         </button>

@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { v4 as uuidv4 } from "uuid";
 import firebase from "firebase";
+import "../style/SettingsMenu.css";
 
-function ChatManagerBox({ user, openChatManagerBox }) {
+function SettingsMenu({ user, openSettingsMenu, settingsMenu }) {
   const fireStore = firebase.firestore();
   const storage = firebase.storage();
   const refChats = fireStore.collection("chat rooms");
@@ -31,7 +32,7 @@ function ChatManagerBox({ user, openChatManagerBox }) {
           alert(
             `to join this chat, enter this url: ${window.location.href}join?chatid=${newId}`
           );
-          openChatManagerBox(false);
+          openSettingsMenu(false);
           chatName.current = "";
         });
     } else {
@@ -47,7 +48,7 @@ function ChatManagerBox({ user, openChatManagerBox }) {
           .doc(chatIdToJoin)
           .update({ users: [...chatUsers[0].users, user.uid] })
           .then(() => {
-            openChatManagerBox(false);
+            openSettingsMenu(false);
             setChatIdToJoin("");
           });
       } else {
@@ -68,7 +69,7 @@ function ChatManagerBox({ user, openChatManagerBox }) {
         .getDownloadURL()
         .then((url) => {
           console.log(url);
-          openChatManagerBox(false);
+          openSettingsMenu(false);
           userRef.doc(user.uid).update({ imageUrl: url });
         })
         .catch((err) => {
@@ -78,35 +79,54 @@ function ChatManagerBox({ user, openChatManagerBox }) {
   };
 
   return (
-    <div id="chat-manager">
-      <p>Open new chat</p>
-      <input
-        type="text"
-        ref={chatName}
-        onChange={(e) => (chatName.current = e.target.value)}
-      />
-      <button onClick={() => createChat()}>Create</button>
-      <p>Join to chat</p>
-      <input
-        type="text"
-        placeholder="Enter Chat ID Here"
-        onChange={(e) => setChatIdToJoin(e.target.value)}
-      />
-      <button onClick={() => joinToChat()}>Join</button>
-      <p>Add profile image</p>
-      <input
-        type="file"
-        onChange={(e) => {
-          setImageFile(e.target.files[0]);
-        }}
-      />
-      <button onClick={() => uploadProfileImage()}>upload</button>
+    <div id="settings-menu" className={settingsMenu ? "open" : "close"}>
+      <div id="settings-menu-header">
+        <h3>Settings</h3>
+        <button
+          id="close-btn"
+          onClick={() => openSettingsMenu((prev) => !prev)}
+        >
+          X
+        </button>
+      </div>
+      <div id="setting-container">
+        <section id="create-chat">
+          <h4 className="setting-header">Open new chat</h4>
+          <input
+            type="text"
+            ref={chatName}
+            onChange={(e) => (chatName.current = e.target.value)}
+          />
+          <button onClick={() => createChat()}>Create</button>
+        </section>
+        <section id="join-chat">
+          <h4 className="setting-header">Join to chat</h4>
+          <input
+            type="text"
+            placeholder="Enter Chat ID Here"
+            onChange={(e) => setChatIdToJoin(e.target.value)}
+          />
+          <button onClick={() => joinToChat()}>Join</button>
+        </section>
+        <section id="add-profile-image">
+          <h4 className="setting-header">Add profile image</h4>
+          <input
+            type="file"
+            onChange={(e) => {
+              setImageFile(e.target.files[0]);
+            }}
+          />
+          <button id="upload-btn" onClick={() => uploadProfileImage()}>
+            upload
+          </button>
+        </section>
+      </div>
       <button id="logout-btn" onClick={() => firebase.auth().signOut()}>
         logout
       </button>
-      <p>{messageToUser}</p>
+      <p id="error-message">{messageToUser}</p>
     </div>
   );
 }
 
-export default ChatManagerBox;
+export default SettingsMenu;

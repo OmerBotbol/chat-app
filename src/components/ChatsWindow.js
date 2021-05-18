@@ -9,6 +9,7 @@ function ChatsWindow({
   header,
   user,
   currentChatId,
+  settingsMenu,
 }) {
   const fireStore = firebase.firestore();
   const refMessages = fireStore.collection("messages");
@@ -40,7 +41,7 @@ function ChatsWindow({
   };
 
   return (
-    <div id="chat-window">
+    <div id="chat-window" className={settingsMenu ? "shadow-theme" : ""}>
       <div id="chat-header">
         <h3>{header}</h3>
         <div>{`chat ID: ${currentChatId}`}</div>

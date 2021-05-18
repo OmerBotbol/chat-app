@@ -1,14 +1,18 @@
 #chat-window {
-  position: absolute;
-  display: table-column;
+  min-width: 60%;
+  width: 100%;
   border: 1px #e3e3e3 solid;
-  width: 70%;
   right: 0;
 }
 
 #chat-header {
   position: relative;
   background-color: #ededed;
+}
+
+.shadow-theme {
+  filter: brightness(0.8) contrast(1.2);
+  pointer-events: none;
 }
 
 #generate-btn {

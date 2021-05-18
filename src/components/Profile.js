@@ -4,7 +4,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatList from "./ChatList";
 import ChatsWindow from "./ChatsWindow";
 import "../style/Profile.css";
-import ChatManagerBox from "./ChatManagerBox";
+import SettingsMenu from "./SettingsMenu";
 
 function Profile({ user }) {
   const fireStore = firebase.firestore();
@@ -12,7 +12,7 @@ function Profile({ user }) {
   const refUsers = fireStore.collection("users");
   const [currentChatId, setCurrentChatId] = useState("");
   const [currentChatName, setCurrentChatName] = useState("");
-  const [chatManagerBox, openChatManagerBox] = useState(false);
+  const [settingsMenu, openSettingsMenu] = useState(false);
 
   const [chatMessages] = useCollectionData(
     refMessages.where("chatId", "==", currentChatId).orderBy("createdAt")
@@ -28,28 +28,33 @@ function Profile({ user }) {
   };
 
   return (
-    <div id="container">
-      {userProfile && (
-        <ChatList
-          user={user}
-          sourceImage={userProfile[0].imageUrl}
-          currentChatId={currentChatId}
-          openChatManagerBox={openChatManagerBox}
-          openChatWindow={openChatWindow}
-        />
-      )}
-      {chatManagerBox && (
-        <ChatManagerBox user={user} openChatManagerBox={openChatManagerBox} />
-      )}
-      {currentChatId && (
-        <ChatsWindow
-          header={currentChatName}
-          currentChatId={currentChatId}
-          chatMessages={chatMessages}
-          sourceImage={userProfile[0].imageUrl}
-          user={user}
-        />
-      )}
+    <div id="profile">
+      <div id="container">
+        {userProfile && (
+          <ChatList
+            user={user}
+            sourceImage={userProfile[0].imageUrl}
+            currentChatId={currentChatId}
+            openSettingsMenu={openSettingsMenu}
+            openChatWindow={openChatWindow}
+          />
+        )}
+        {currentChatId && (
+          <ChatsWindow
+            header={currentChatName}
+            currentChatId={currentChatId}
+            chatMessages={chatMessages}
+            sourceImage={userProfile[0].imageUrl}
+            user={user}
+            settingsMenu={settingsMenu}
+          />
+        )}
+      </div>
+      <SettingsMenu
+        user={user}
+        openSettingsMenu={openSettingsMenu}
+        settingsMenu={settingsMenu}
+      />
     </div>
   );
 }
